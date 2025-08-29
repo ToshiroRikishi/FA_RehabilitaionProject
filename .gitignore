@@ -1,0 +1,53 @@
+# Виртуальное окружение
+HPenv/
+venv/
+.env
+
+# Скомпилированные Python-файлы
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Модели и большие бинарные файлы
+models/ctgan/*.pkl
+
+# Логи
+*.log
+
+# Настройки IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Дампы БД
+migrations/*_dump.sql
+migrations/*_data.sql
+*.dump
+*.sql
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Кэш pip
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.pnp
+frontend/.pnp.js
+frontend/yarn-error.log
+
+# Docker
+*.pid
+*.sock
+.dockerignore
+Dockerfile
+docker-compose.yml

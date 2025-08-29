@@ -1,0 +1,470 @@
+/* frontend/src/components/CreateCard.module.css*/
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  background: #ffffff;
+  padding: 16px 20px;
+  z-index: 100;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.fixed-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.btnBack {
+  background: linear-gradient(135deg, #117bc2, #55ade7);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btnBack:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(17, 123, 194, 0.3);
+}
+
+.btnSave {
+  background: linear-gradient(135deg, #8d0d67, #db67af);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-left: 890px;
+}
+
+.btnSave:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(207, 19, 151, 0.3);
+}
+
+.btnSave:disabled {
+  background: linear-gradient(135deg, #9ca3af, #d1d5db);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.container {
+  margin-top: 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scale-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.scale-section {
+  width: 100%;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0.5rem 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.disease-list {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.disease-entry {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.disease-entry input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.details {
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.details summary {
+  cursor: pointer;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.details summary::marker {
+  content: '';
+}
+
+.details summary::before {
+  content: '▶';
+  margin-right: 12px;
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.details[open] summary::before {
+  content: '▼';
+}
+
+.details[open] summary {
+  margin-bottom: 1.5rem;
+}
+
+.details[open] .grid {
+  max-height: 2000px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.details .grid {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.norm-info {
+  font-size: 0.875rem;
+  color: var(--secondary-color);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.required {
+  color: var(--error-color);
+  margin-left: 6px;
+}
+
+/* === Стили для таблиц === */
+/* Общие стили для таблиц */
+.activity-table-container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.activity-section-title {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.activity-table th,
+.activity-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  height: 40px;
+}
+
+.activity-table th {
+  background-color: #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.activity-table th:first-child {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.activity-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 1rem;
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.activity-cell {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  height: 100%;
+}
+
+/* Цвета для анаэробных (level-) */
+.activity-cell.level-1 {
+  background-color: #e6f0fa;
+  color: #000000;
+}
+
+.activity-cell.level-2 {
+  background-color: #b3d4fc;
+  color: #000000;
+}
+
+.activity-cell.level-3 {
+  background-color: #80b8fb;
+  color: #000000;
+}
+
+.activity-cell.level-4 {
+  background-color: #4d9cfa;
+  color: #ffffff;
+}
+
+.activity-cell.level-5 {
+  background-color: #1e40af;
+  color: #ffffff;
+}
+
+/* Цвета для кардио (cardio-level-) */
+.activity-cell.cardio-level-1 {
+  background-color: #fff7ed;
+  color: #000000;
+}
+
+.activity-cell.cardio-level-2 {
+  background-color: #ffedd5;
+  color: #000000;
+}
+
+.activity-cell.cardio-level-3 {
+  background-color: #fed7aa;
+  color: #000000;
+}
+
+.activity-cell.cardio-level-4 {
+  background-color: #fdba74;
+  color: #000000;
+}
+
+.activity-cell.cardio-level-5 {
+  background-color: #fb923c;
+  color: #ffffff;
+}
+
+/* Цвета для баланса (balance-level-) */
+.activity-cell.balance-level-1 {
+  background-color: #ecfdf5;
+  color: #000000;
+}
+
+.activity-cell.balance-level-2 {
+  background-color: #d1fae5;
+  color: #000000;
+}
+
+.activity-cell.balance-level-3 {
+  background-color: #a7f3d0;
+  color: #000000;
+}
+
+.activity-cell.balance-level-4 {
+  background-color: #6ee7b7;
+  color: #000000;
+}
+
+.activity-cell.balance-level-5 {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* Цвета для растяжки (stretching-level-) */
+.activity-cell.stretching-level-1 {
+  background-color: #cbc8d8;
+  color: #000000;
+}
+
+.activity-cell.stretching-level-2 {
+  background-color: #615b7a;
+  color: #000000;
+}
+
+.activity-cell.stretching-level-2:hover:not(.selected) {
+  background-color: #c4b5fd;
+}
+
+.activity-cell.stretching-level-2.selected {
+  background-color: #6d28d9;
+  color: #ffffff;
+}
+
+/* Общие стили для контента ячеек */
+.activity-cell-content {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.activity-cell-content.selected {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+  font-weight: 700;
+}
+
+.activity-cell-content:hover:not(.selected) {
+  opacity: 0.8;
+}
+
+.activity-cell-content.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Описание для кардио/баланса */
+.activity-description {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+/* Результат уровня */
+.activity-result {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Подзаголовки для растяжки */
+.activity-subsection-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Фиксированная ширина колонок */
+.activity-table th:not(:first-child),
+.activity-table td:not(:first-child) {
+  width: 100px;
+}
+
+.activity-table th:first-child,
+.activity-table td:first-child {
+  width: 400px;
+}
+
+/* Дополнительные поля */
+.additional-fields {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field-group {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fixed-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-back,
+  .btn-save {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fixed-header {
+    padding: 8px 12px;
+  }
+
+  .btn-back,
+  .btn-save {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .container {
+    margin-top: 60px;
+  }
+}

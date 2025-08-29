@@ -1,0 +1,382 @@
+/* frontend/src/components/DoctorDashboard.module.css*/
+
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
+.doctorDashboardContainer {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
+/* ========== ШАПКА ДОКТОРА ========== */
+.doctorHeader {
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.headerLayout {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ========== АВАТАР ДОКТОРА ========== */
+.doctorAvatarBlock {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.doctorAvatar img {
+  border-radius: 50%;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  margin: 0 10px;
+}
+
+/* ========== ИНФОРМАЦИЯ О ДОКТОРЕ ========== */
+.doctorInfoBlock {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 0;
+}
+
+.doctorInfoCard {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: none;
+}
+
+.doctorTitle {
+  margin: 0 0 20px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1E88E5;
+  text-align: center;
+}
+
+.doctorMainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.doctorInfoField {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doctorInfoField label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  width: 120px;
+}
+
+.doctorInfoField input {
+  padding: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 250px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s;
+}
+
+.doctorInfoField input:focus {
+  border-color: #1E88E5;
+  outline: none;
+}
+
+.doctorInfoField input::placeholder {
+  color: #999;
+}
+
+/* ========== СЕКЦИЯ ПАЦИЕНТОВ И ГРАФИКОВ ========== */
+.patientsChartSection {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.chartContainer {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 100%;
+  position: relative;
+}
+
+.chartPlaceholder {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  overflow: hidden;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========== ТАБЛИЦА ПАЦИЕНТОВ ========== */
+.patientsList table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.patientsList th,
+.patientsList td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.patientsList th {
+  background-color: #f3f3f3;
+}
+
+.actionsHeader {
+  text-align: center;
+}
+
+.actionsCell {
+  text-align: center;
+}
+
+.actionsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ========== КНОПКИ ДЕЙСТВИЙ ========== */
+.predictButtonCustom {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #117bc2, #55ade7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Добавлено для предотвращения переноса текста */
+}
+
+.predictButtonCustom:hover {
+  background: #1976D2;
+}
+
+.predictButtonCustom:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.quickFaButton {
+  padding: 10px 20px; /* Изменено с 45px на 20px для единообразия */
+  font-size: 0.85rem; /* Изменено с 0.9rem на 0.85rem для единообразия */
+  cursor: pointer;
+  background: linear-gradient(135deg, #8d0d67, #db67af);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Добавлено для предотвращения переноса текста */
+}
+
+.quickFaButton:hover {
+  background: #db67afcc;
+}
+
+.quickFaButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cardButton {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #117bc2, #55ade7);
+  box-shadow: none;
+  /* margin-left: 95px; - УДАЛЕНО */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Добавлено */
+}
+
+.cardButton:hover {
+  background: #1976D2;
+}
+
+.cardButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.rehabButton {
+  padding: 10px 20px; /* Изменено с 45px на 20px для единообразия */
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #8d0d67, #db67af);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rehabButton:hover {
+  background: #70144da4;
+}
+
+/* ========== КОНТЕЙНЕР ДЛЯ ВЕРХНИХ КНОПОК ========== */
+.topButtonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Центрируем кнопки */
+  gap: 10px; /* Такой же gap как у .actionsContainer */
+  flex-wrap: wrap;
+}
+
+/* ========== КНОПКА ДОБАВЛЕНИЯ КАРТЫ ========== */
+.addCardButton {
+  padding: 20px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin: 0;
+  box-shadow: none;
+  transition: background 0.2s;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.addCardButton:hover {
+  background: rgba(33, 150, 243, 0.5);
+}
+
+.addCardIcon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 768px) {
+  .doctorHeader {
+    padding: 10px;
+  }
+
+  .headerLayout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .doctorAvatarBlock {
+    justify-content: center;
+  }
+
+  .doctorAvatar img {
+    margin: 10px 0;
+  }
+
+  .doctorInfoBlock {
+    padding-top: 0;
+    align-items: center;
+  }
+
+  .doctorInfoCard {
+    width: 100%;
+  }
+
+  .doctorInfoField {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doctorInfoField label {
+    width: auto;
+  }
+
+  .doctorInfoField input {
+    width: 100%;
+  }
+
+  .patientsChartSection {
+    padding: 10px;
+  }
+
+  .chartPlaceholder {
+    max-width: 100%;
+  }
+
+  .patientsList table,
+  .patientsList th,
+  .patientsList td {
+    font-size: 0.85rem;
+  }
+
+  .predictButtonCustom,
+  .quickFaButton,
+  .cardButton,
+  .rehabButton {
+    width: 100%;
+    margin: 5px 0;
+    height: 48px;
+  }
+
+  .cardButton {
+    margin-left: 0; /* Уже удален margin-left выше */
+  }
+
+  .topButtonsContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+}

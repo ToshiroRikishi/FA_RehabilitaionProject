@@ -1,0 +1,775 @@
+/* frontend/src/components/LevelFA.module.css*/
+
+/* ========== СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ LEVEL FA ========== */
+
+/* ========== РАСКРЫВАЮЩИЕСЯ СЕКЦИИ ========== */
+.sectionTitleCollapsible {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.sectionTitleCollapsible::before {
+  content: '▶';
+  margin-right: 12px;
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.details[open] .sectionTitleCollapsible::before {
+  content: '▼';
+  transform: rotate(0deg);
+}
+
+/* ========== КАЛЬКУЛЯТОР РАСЧЁТА УРОВНЯ ФА ========== */
+.calculatorContainer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 
+    0 20px 40px rgba(102, 126, 234, 0.3),
+    0 8px 16px rgba(102, 126, 234, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.calculatorContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='7' cy='7' r='4'/%3E%3Ccircle cx='53' cy='53' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+
+.calculatorHeader {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.calculatorTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.calculatorDescription {
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.calculatorForm {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.calculatorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calculatorField {
+  position: relative;
+}
+
+.calculatorLabel {
+  display: block;
+  width: 100%;
+}
+
+.calculatorLabelText {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.calculatorLabelHint {
+  display: block;
+  font-size: 0.75rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.calculatorInput,
+.calculatorSelect {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #2d3748;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.calculatorInput:focus,
+.calculatorSelect:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 
+    0 0 0 3px rgba(102, 126, 234, 0.1),
+    0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+.calculatorSelect {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+  padding-right: 2.5rem;
+}
+
+.calculatorInput:disabled,
+.calculatorSelect:disabled {
+  background-color: #f7fafc;
+  color: #a0aec0;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.calculatorActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.calculatorButtonPrimary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 12px rgba(102, 126, 234, 0.3),
+    0 2px 4px rgba(102, 126, 234, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.calculatorButtonPrimary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 20px rgba(102, 126, 234, 0.4),
+    0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.calculatorButtonPrimary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.calculatorButtonPrimary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.calculatorButtonSecondary {
+  background: rgba(74, 85, 104, 0.1);
+  color: #4a5568;
+  border: 2px solid rgba(74, 85, 104, 0.2);
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.calculatorButtonSecondary:hover:not(:disabled) {
+  background: rgba(74, 85, 104, 0.15);
+  border-color: rgba(74, 85, 104, 0.3);
+  transform: translateY(-1px);
+}
+
+.calculatorButtonSecondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.calculatorSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: calculatorSpin 1s ease-in-out infinite;
+}
+
+@keyframes calculatorSpin {
+  to { transform: rotate(360deg); }
+}
+
+.calculatorResult {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+  border-radius: 16px;
+  padding: 0;
+  border: 2px solid #48bb78;
+  box-shadow: 0 8px 20px rgba(72, 187, 120, 0.2);
+  overflow: hidden;
+}
+
+.calculatorResultHeader {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  padding: 1rem;
+  text-align: center;
+}
+
+.calculatorResultTitle {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.calculatorResultContent {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.calculatorResultLevel {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: 2px solid;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calculatorResultLevelText {
+  display: block;
+}
+
+.calculatorError {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, #fed7d7 0%, #fecaca 100%);
+  border: 2px solid #f56565;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(245, 101, 101, 0.2);
+}
+
+.calculatorErrorIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.calculatorErrorText {
+  color: #c53030;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ========== АДАПТИВНОСТЬ КАЛЬКУЛЯТОРА ========== */
+@media (max-width: 768px) {
+  .calculatorGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .calculatorActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .calculatorButtonPrimary,
+  .calculatorButtonSecondary {
+    min-width: auto;
+  }
+  
+  .calculatorHeader {
+    padding: 1.5rem;
+  }
+  
+  .calculatorForm {
+    padding: 1.5rem;
+  }
+  
+  .calculatorTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculatorContainer {
+    border-radius: 12px;
+  }
+  
+  .calculatorHeader {
+    border-radius: 12px 12px 0 0;
+    padding: 1rem;
+  }
+  
+  .calculatorForm {
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+  }
+  
+  .calculatorGrid {
+    gap: 0.75rem;
+  }
+  
+  .calculatorTitle {
+    font-size: 1.1rem;
+  }
+  
+  .calculatorDescription {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========== КОНТЕНТ СЕКЦИЙ ========== */
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fieldGroup {
+  width: 100%;
+  max-width: none; /* Убираем ограничение ширины */
+}
+
+/* ========== РУЧНОЙ ВВОД - УЛУЧШЕННАЯ СЕТКА ========== */
+.manualInputWrapper {
+  width: 100%;
+}
+
+.manualInputContainer {
+  display: grid;
+  /* Адаптивная сетка: минимум 280px для каждой колонки */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem; /* Увеличили отступы */
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition:
+    height 0.4s ease-in-out,
+    opacity 0.4s ease-in-out,
+    padding 0.4s ease-in-out,
+    margin-bottom 0.4s ease-in-out;
+}
+
+/* ========== ИНФОРМАЦИЯ О ПАЦИЕНТЕ ========== */
+.patientInfo {
+  margin-top: 1.5rem;
+}
+
+/* ========== УНИФИЦИРОВАННЫЕ СТИЛИ ДЛЯ ВСЕХ ПОЛЕЙ ВВОДА ========== */
+.inputField,
+.inputFieldSelect {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: #ffffff; /* Единый белый фон */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* Стили для select */
+.inputFieldSelect {
+  appearance: none;
+  cursor: pointer;
+  /* Добавляем стрелочку для select */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Состояния фокуса */
+.inputField:focus,
+.inputFieldSelect:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+/* Состояния отключения */
+.inputField:disabled,
+.inputFieldSelect:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ========== ЛЕЙБЛЫ ========== */
+.input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.4;
+}
+
+/* ========== ИНТЕРАКТИВНЫЕ ТАБЛИЦЫ АКТИВНОСТИ ========== */
+.activityTableContainer {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.activitySectionTitle {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+.activitySubsectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+.activityDescription {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+.activityTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  table-layout: fixed;
+}
+
+.activityTable th,
+.activityTable td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  height: 40px;
+}
+
+.activityTable th {
+  background-color: #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.activityTable th:first-child,
+.activityTable td:first-child {
+  text-align: left;
+  padding-left: 1rem;
+  width: 300px;
+}
+
+.activityTable td:first-child {
+  font-weight: 500;
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+/* ========== ЯЧЕЙКИ АКТИВНОСТИ ========== */
+.activityCell {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  height: 100%;
+}
+
+.activityCellContent {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.activityCellContent.selected {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+  font-weight: 700;
+}
+
+.activityCellContent:hover:not(.selected) {
+  opacity: 0.8;
+}
+
+.activityCellContent.disabled {
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+.activityResult {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ========== ЦВЕТОВЫЕ СХЕМЫ ДЛЯ УРОВНЕЙ АКТИВНОСТИ ========== */
+
+/* Анаэробные упражнения (синие оттенки) */
+.activityCell.level1 {
+  background-color: #e6f0fa;
+  color: #000000;
+}
+
+.activityCell.level2 {
+  background-color: #b3d4fc;
+  color: #000000;
+}
+
+.activityCell.level3 {
+  background-color: #80b8fb;
+  color: #000000;
+}
+
+.activityCell.level4 {
+  background-color: #4d9cfa;
+  color: #ffffff;
+}
+
+.activityCell.level5 {
+  background-color: #1e40af;
+  color: #ffffff;
+}
+
+/* Кардиоваскулярные упражнения (оранжевые оттенки) */
+.activityCell.cardioLevel1 {
+  background-color: #fff7ed;
+  color: #000000;
+}
+
+.activityCell.cardioLevel2 {
+  background-color: #ffedd5;
+  color: #000000;
+}
+
+.activityCell.cardioLevel3 {
+  background-color: #fed7aa;
+  color: #000000;
+}
+
+.activityCell.cardioLevel4 {
+  background-color: #fdba74;
+  color: #000000;
+}
+
+.activityCell.cardioLevel5 {
+  background-color: #fb923c;
+  color: #ffffff;
+}
+
+/* Упражнения на баланс (зеленые оттенки) */
+.activityCell.balanceLevel1 {
+  background-color: #ecfdf5;
+  color: #000000;
+}
+
+.activityCell.balanceLevel2 {
+  background-color: #d1fae5;
+  color: #000000;
+}
+
+.activityCell.balanceLevel3 {
+  background-color: #a7f3d0;
+  color: #000000;
+}
+
+.activityCell.balanceLevel4 {
+  background-color: #6ee7b7;
+  color: #000000;
+}
+
+.activityCell.balanceLevel5 {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* Упражнения на растяжку (фиолетовые оттенки) */
+.activityCell.stretchingLevel1 {
+  background-color: #f3e8ff;
+  color: #000000;
+}
+
+.activityCell.stretchingLevel2 {
+  background-color: #d8b4fe;
+  color: #000000;
+}
+
+/* Добавляем в конец файла */
+
+.calculatorButtonSecondary {
+  background: rgba(74, 85, 104, 0.1);
+  color: #4a5568;
+  border: 2px solid rgba(74, 85, 104, 0.2);
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 140px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.calculatorButtonSecondary:hover:not(:disabled) {
+  background: rgba(74, 85, 104, 0.15);
+  border-color: rgba(74, 85, 104, 0.3);
+  transform: translateY(-1px);
+}
+
+.calculatorButtonSecondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.patientInfo h3 {
+  margin-top: 0;
+  color: #2d3748;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+
+.patientInfo {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.patientInfo p {
+  margin: 0;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 768px) {
+  .manualInputContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .sectionTitleCollapsible {
+    font-size: 1.5rem;
+  }
+
+  .activitySectionTitle {
+    font-size: 1.125rem;
+  }
+
+  .activitySubsectionTitle {
+    font-size: 1rem;
+  }
+
+  .activityTable th,
+  .activityTable td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .activityTable th:first-child,
+  .activityTable td:first-child {
+    width: auto;
+  }
+
+  .fieldGroup {
+    max-width: none;
+  }
+
+  .label-text {
+    font-size: 0.85rem;
+  }
+
+  .inputField,
+  .inputFieldSelect {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .inputFieldSelect {
+    padding-right: 2rem;
+  }
+}
