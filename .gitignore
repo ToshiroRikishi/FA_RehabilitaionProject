@@ -9,9 +9,6 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Модели и большие бинарные файлы
-models/ctgan/*.pkl
-
 # Логи
 *.log
 
@@ -22,8 +19,6 @@ models/ctgan/*.pkl
 *.sublime-workspace
 
 # Дампы БД
-migrations/*_dump.sql
-migrations/*_data.sql
 *.dump
 *.sql
 
@@ -49,5 +44,3 @@ frontend/yarn-error.log
 *.pid
 *.sock
 .dockerignore
-Dockerfile
-docker-compose.yml
