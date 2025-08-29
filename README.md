@@ -64,6 +64,7 @@ pip install -r requirements.txt
 cd frontend
 npm install
 ```
+### 3. Дополнительные действия для защиты данных
 
 Для БД:
 Создайте папку в корневом каталоге:
@@ -82,13 +83,13 @@ mkdir migrations
 .env
 ```
 
-### 3. Запуск через Docker
+### 4. Запуск через Docker
 Соберите и запустите контейнеры:
 ```bash
 docker-compose up --build
 ```
 
-### 4. Локальный запуск (без Docker)
+### 5. Локальный запуск (без Docker)
 - Бэкенд: `uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload`
 - Фронтенд: `cd frontend && npm start`
 - Создайте БД: `python create_db.py`
